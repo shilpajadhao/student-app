@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="{%static "css/new.css"%}">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="/add/" method="post">{%csrf_token%}
+      <h1>StudentApp</h1>
+      <input type="text" name="name" placeholder="Enter stu name">
+      <input type="text" name="rollno" placeholder="Enterstu rollno">
+      <input type="text" name="marks" placeholder="Enter stu marks">
+       <button type="submit" name="button">ADDNew</button>
+       </form>
+      <ul>
+    {%for i in data%}
+           <form class="" action="/delete/{{i.id}}/" method="post" style="display:inline;">{%csrf_token%}
+            <li>{{i.name}}
+                {{i.rollno}}
+                {{i.marks}}
+              <button type="submit" name="button">delete</button><br>
+             </form>
+
+    {%endfor%}
+       </li>
+     </ul>
+  </body>
+</html>
